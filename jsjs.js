@@ -131,19 +131,27 @@ function repeat() {
   for (const element of Array.from(document.getElementsByTagName('repeat'))) {
         const elvalue = element.getAttribute("repeat");
         const delay = element.getAttribute("delay");
-
+        const copakmapocitatju = elvalue + 1;
         const string = element.innerHTML;
-
-              for (let pos = 0; pos < elvalue; pos ++) {
-                forpos(pos);
-
+        if (!isNaN(delay)) {
+          for (let pos = 1; pos-1 < elvalue; pos ++) {
+            forpos(pos);
 }
+        }
+        else
+        {
+           delay = new Function(`return ${ element.getAttribute("delay") }`)();
+           for (let pos = 1; pos-1 < elvalue; pos ++) {
+             forpos(pos);
+           }
+        }
+
 function forpos(value) {
   setTimeout(function(){
     slovo = slovo + string;
   element.innerHTML=slovo;
   console.log(slovo);
-}, 1000 * value);
+}, delay * value);
 
 }
 }}
