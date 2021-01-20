@@ -15,18 +15,20 @@
 
              console.log();*/
 let gg = 0;
+let pos = 1000;
     </script>
-
   </head>
   <body>
-    <scripting if="gg==0" on:mousewheel="gg=1" style="color:blue" mystyle-only="background:;"> <img src="https://tse1.explicit.bing.net/th?id=OIP.GAAXbRjMsmtIt7Ps4k2eiwHaJb&pid=Api&P=0&w=300&h=300" alt=""> </scripting>
 
-    <scripting if="gg==1" on:mousewheel="gg=0" style="color:blue" mystyle-only="background:;"> <img src="https://tse2.mm.bing.net/th?id=OIP.W6OUHhz7VwdAtJxpeUyUQQHaI-&pid=Api&P=0&w=300&h=300" alt=""> </scripting>
+                 <delay delay="1000" >  <repeat delay="pos" repeat="4"delay=""  >ahoj</repeat></delay>
+                        <delay delay="1044" >     <scripting if="gg==0" on:click="gg=1" style="height:44px;width:44px;background:blue;" mystyle-plus=""></scripting>
+  </delay>
+    <scripting if="gg==1" on:click="gg=0" style="height:44px;width:44px;background:lightblue;" mystyle-plus=""></scripting>
 
-               <for loop="let pos = 0; pos < 4; pos ++" for="gg++"  >
-               <repeat repeat="4" ></repeat>
 
-      <calc>""</calc>
+               <for loop="let pos = 0; pos < 1000; pos ++" for="gg++"  ></for>
+
+      <calc></calc>
 
 
 
