@@ -9,7 +9,14 @@ delay();
     let ahoj = 0;
     let slovo = "";
     for (const element of Array.from(document.getElementsByTagName('delay'))) {
-          const delay = element.getAttribute("delay");
+          let delay = element.getAttribute("delay");
+          if (!isNaN(delay)) {
+            delay = element.getAttribute("delay");
+          }
+          else
+          {
+            delay =  new Function(`return ${ delay }`)();
+          }
                       element.style.display="none";
                 setTimeout(function(){
                    element.style.display="block";
@@ -130,7 +137,8 @@ function repeat() {
   let slovo = "";
   for (const element of Array.from(document.getElementsByTagName('repeat'))) {
         const elvalue = element.getAttribute("repeat");
-        const delay = element.getAttribute("delay");
+        let delay = element.getAttribute("delay");
+        console.log(delay);
         const copakmapocitatju = elvalue + 1;
         const string = element.innerHTML;
         if (!isNaN(delay)) {
@@ -141,6 +149,7 @@ function repeat() {
         else
         {
            delay = new Function(`return ${ element.getAttribute("delay") }`)();
+           console.log(delay);
            for (let pos = 1; pos-1 < elvalue; pos ++) {
              forpos(pos);
            }
