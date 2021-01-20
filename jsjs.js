@@ -4,7 +4,22 @@
   //script();
   //math();
   ////////////////////////////////////
+delay();
+  function delay() {
+    let ahoj = 0;
+    let slovo = "";
+    for (const element of Array.from(document.getElementsByTagName('delay'))) {
+          const delay = element.getAttribute("delay");
+                      element.style.display="none";
+                setTimeout(function(){
+                   element.style.display="block";
 
+                 }, delay);
+
+
+
+  }
+  }
   /////////////////////////////
   //if
   //////////////////////
@@ -21,6 +36,7 @@
       }
 }
 }
+
 //////////////////////////////
 //if
 ///////////////////////////
@@ -114,16 +130,23 @@ function repeat() {
   let slovo = "";
   for (const element of Array.from(document.getElementsByTagName('repeat'))) {
         const elvalue = element.getAttribute("repeat");
+        const delay = element.getAttribute("delay");
+
         const string = element.innerHTML;
 
-
-        for (let pos = 0; pos < elvalue; pos ++) {
-          slovo = slovo + string;
-        }
-        element.innerHTML=slovo;
+              for (let pos = 0; pos < elvalue; pos ++) {
+                forpos(pos);
 
 }
+function forpos(value) {
+  setTimeout(function(){
+    slovo = slovo + string;
+  element.innerHTML=slovo;
+  console.log(slovo);
+}, 1000 * value);
+
 }
+}}
 
 
 ///////////////////////////////////////////////
