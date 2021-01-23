@@ -3,7 +3,29 @@
 //library Ota Prokopec 1.1
   //script();
   //math();
+      const data = new Proxy({ ota: 0}, {
+
+        get(target, prop) {
+
+          return target[prop];
+
+        },
+
+        set(target, prop, value) {
+
+          target[prop] = value;
+                 //console.log("this function");
+          math();
+          return true;
+
+        }
+
+      });
+      data.pos = 0;
+
+
   ////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
 delay();
   function delay() {
     let ahoj = 0;
@@ -57,7 +79,7 @@ window.addEventListener(ifdo, function (event) {
   onclick();
 })
 function onclick() {
-
+ //console.log("onclick");
   /////////////// jedno repeat scripting
   for (const element of Array.from(document.getElementsByTagName('scripting'))) {
     let slovo = "";
@@ -75,6 +97,7 @@ function onclick() {
 }
   element.addEventListener(slovo, function (event) {
             const element__attribute = element.getAttribute("on:" + slovo);
+            console.log(element);
             const domythinkgg = new Function(`return ${ element__attribute }`)();
             const att = element.attributes;
             for(const [key, value] of Object.entries(att)) {
@@ -92,7 +115,7 @@ function onclick() {
            array.slice(0, array.length);
            slovo = "";
         script ();
-        math();
+        //math();
 
   })
   }
@@ -109,11 +132,13 @@ function onclick() {
 ///////////////////////////
 //math function
 /////////////////////////////////////////////////////////
-math();
+//math();
 function math() {
   for (const element of Array.from(document.getElementsByTagName('calc'))) {
     const vysledek = element.innerText;
     const promenna = element.getAttribute("var");
+
+    //console.log("ahoj");
     if (promenna == "") {
       if (isNaN(vysledek)) {
         console.warn("this is not number, tag named calc can cacl, but it can write string too     if you want write string so you can write string to ''");
@@ -126,14 +151,14 @@ function math() {
     }
     else {
 
-            if (vysledek == "") {
+            if (vysledek != "-") {
               let vypocitani = new Function(`return ${  promenna }`)();
-              console.log("ahoj");
+              ////console.log("ahoj");
               element.innerHTML=vypocitani;
             }
             else {
-              let vypocitani = new Function(`return ${  promenna }${  vysledek }`)();
-              console.log(vypocitani);
+              //let vypocitani = new Function(`return ${  promenna }${  vysledek }`)();
+              ////console.log(vypocitani);
             }
 
     }
@@ -145,13 +170,27 @@ function math() {
 
 forloop();
 function forloop() {
+  ////console.log("ahoj");
   for (const element of Array.from(document.getElementsByTagName('for'))) {
         const elvalue = element.getAttribute("loop");
         const vysledek = element.getAttribute("for");
-        const vypocitani = new Function(`for (${ elvalue }){
-          ${vysledek}
-        }`)();
+        ////console.log(elvalue);
+        //for (let pos = 0; pos < 4; pos ++) {
+        //  data.ota++;
+        //}
+        /*const vypocitani = new Function(`for (${ elvalue }){
+          forloopinfun()
+        }`)();*/
 
+        function evalFor(func) {
+           new Function(`return (function(func){ for(${ elvalue }) { func() } })`)()(func);
+        }
+
+        evalFor(forloopinfun);
+
+     function forloopinfun() {
+       const vypocitani = new Function(`return ${  vysledek }`)();
+     }
 }
 }
 repeat();
@@ -164,9 +203,9 @@ function repeat() {
           elvalue = ahojgg;
         }
         else {
-          elvalue = new Function(`return ${ element.getAttribute("ahojgg") }`)();
+          elvalue = new Function(`return ${ ahojgg }`)();
         }
-        console.log(elvalue);
+        ////console.log(elvalue);
         const copakmapocitatju = elvalue + 1;
         const string = element.innerHTML;
         if (!isNaN(delay)) {
