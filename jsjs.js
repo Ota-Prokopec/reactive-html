@@ -74,10 +74,10 @@ delay();
 ///////////////////
 let ifdo;
 
-onclick();
+onclick();/*
 window.addEventListener(ifdo, function (event) {
   onclick();
-})
+})*/
 function onclick() {
  //console.log("onclick");
   /////////////// jedno repeat scripting
@@ -97,7 +97,7 @@ function onclick() {
 }
   element.addEventListener(slovo, function (event) {
             const element__attribute = element.getAttribute("on:" + slovo);
-            console.log(element);
+            console.log(element__attribute);
             const domythinkgg = new Function(`return ${ element__attribute }`)();
             const att = element.attributes;
             for(const [key, value] of Object.entries(att)) {
@@ -113,11 +113,10 @@ function onclick() {
           }}
           ifdo = slovo;
            array.slice(0, array.length);
-           slovo = "";
         script ();
         //math();
-
   })
+
   }
 }
 
