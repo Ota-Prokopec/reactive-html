@@ -160,8 +160,13 @@ function repeat() {
   let slovo = "";
   for (const element of Array.from(document.getElementsByTagName('repeat'))) {
         const ahojgg = element.getAttribute("repeat");
-        ggahoj = new Function(`return ${ element.getAttribute("ahojgg") }`)();
-        let elvalue = element.getAttribute("ggahoj");
+        if (!isNaN(ahojgg)) {
+          elvalue = ahojgg;
+        }
+        else {
+          elvalue = new Function(`return ${ element.getAttribute("ahojgg") }`)();
+        }
+        console.log(elvalue);
         const copakmapocitatju = elvalue + 1;
         const string = element.innerHTML;
         if (!isNaN(delay)) {
